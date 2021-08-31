@@ -7,6 +7,7 @@ public class TooSmallSalaryException extends Exception{
     super(message);
     }
 
+
     public TooSmallSalaryException(Throwable cause) {
         super(cause);
     }
@@ -14,5 +15,4 @@ public class TooSmallSalaryException extends Exception{
     public TooSmallSalaryException(String message, Throwable cause) {
         super(message, cause);
     }
-
 }
