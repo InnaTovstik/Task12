@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Main {
 
+
     public static void main(String[] args) throws ImpossibleNameException, TooSmallSalaryException {
         ArrayList<Employee> company = new ArrayList<>();
         company.add(createEmployee("Ivan", "Ivanov", -100));
