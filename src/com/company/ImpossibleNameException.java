@@ -1,16 +1,23 @@
 package com.company;
 
-public class ImpossibleNameException extends Throwable {
-    public ImpossibleNameException(String message) {
+// Исключения должны иметь поле, в котором хранится значение,
+// которое привело к исключению (некорректная зп или имя).
+
+class ImpossibleNameException extends Throwable {
+
+    String name;
+
+    ImpossibleNameException(String name) {
+       this.name = name;
     }
 
-    public ImpossibleNameException(Throwable cause) {
-        super(cause);
+    public ImpossibleNameException() {
+
     }
 
-    public ImpossibleNameException(String message, Throwable cause) {
-        super(message, cause);
+    @Override
+    public String getMessage() {
+        return "Имя введено не латинским алфавитом : " + name;
     }
-
 
 }

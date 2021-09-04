@@ -1,45 +1,50 @@
 package com.company;
 
-import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 
 public class Main {
 
+    public static void main(String[] args) throws ImpossibleNameException, TooSmallSalaryException, IOException {
 
-    public static void main(String[] args) throws ImpossibleNameException, TooSmallSalaryException {
-        ArrayList<Employee> company = new ArrayList<>();
-        company.add(createEmployee("Ivan", "Ivanov", -100));
-        company.add(createEmployee("Petro", "Ivanov", 1000));
-        company.add(createEmployee("Ivanov", 1000));
-        company.add(createEmployee("Stepan", "Stepanov"));
-        company.add(createEmployee("Oksana", "Petrenko", 2000));
-        company.add(createEmployee("Alex", "Zirov", 1500));
-        company.add(createEmployee("Alla", "Minova", 800));
-        company.add(createEmployee("Ivanenko", 200));
-        printEmployee(company);
-    }
-
-
-    public static void printEmployee(ArrayList<Employee> e) {
-        for (Employee employee : e) {
+        try {
+            Employee employee = createEmployee("Иван", "Ivanenko", 100);
+            System.out.println(employee);
+        } catch (ImpossibleNameException | TooSmallSalaryException e) {
+            e.printStackTrace();
+            Employee employee = createEmployee();
             System.out.println(employee);
         }
     }
 
-    public static Employee createEmployee (String firstName, String lastName,double salary) throws ImpossibleNameException, TooSmallSalaryException {
+    public static Employee createEmployee(String firstName, String lastName, double salary)
+            throws ImpossibleNameException, TooSmallSalaryException {
 
         return new Employee(firstName, lastName, salary);
-        }
-
-    public static Employee createEmployee (String firstName, String lastName) throws ImpossibleNameException {
-        return new Employee(firstName, lastName);
-        }
-
-   public static Employee createEmployee (String lastName,double salary) throws ImpossibleNameException, TooSmallSalaryException {
-       return new Employee(lastName, salary);
-        }
-
-   public static Employee createEmployee (double salary) throws TooSmallSalaryException {
-       return new Employee(salary);
-        }
     }
+
+    public static Employee createEmployee()
+            throws ImpossibleNameException, TooSmallSalaryException, NumberFormatException {
+
+        System.out.println("Повторите введение данных");
+
+        try (BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in))) {
+            System.out.println("Введите firstName: ");
+            String firstName = buffer.readLine();
+            System.out.println("Введите lastName: ");
+            String lastName = buffer.readLine();
+            System.out.println("Введите salary: ");
+            double salary = Double.parseDouble(buffer.readLine());
+            System.out.println();
+            return new Employee(firstName, lastName, salary);
+        } catch (IOException | NumberFormatException | ImpossibleNameException | TooSmallSalaryException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+}
 
