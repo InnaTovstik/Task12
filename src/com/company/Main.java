@@ -42,9 +42,6 @@ public class Main {
         } catch (IOException | NumberFormatException | ImpossibleNameException | TooSmallSalaryException e) {
             e.printStackTrace();
         }
-
         return null;
     }
-
 }
-

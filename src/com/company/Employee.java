@@ -1,6 +1,6 @@
 package com.company;
 
-public class Employee extends Validator {
+public class Employee {
 
     private final int id;
     private static int ID=1;

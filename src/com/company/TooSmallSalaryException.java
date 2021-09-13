@@ -2,18 +2,14 @@ package com.company;
 // Исключения должны иметь поле, в котором хранится значение,
 // которое привело к исключению (некорректная зп или имя).
 
- class TooSmallSalaryException extends Exception{
+ public class TooSmallSalaryException extends Exception{
 
-    double salary;
+     private double salary;
 
     TooSmallSalaryException(double salary) {
         this.salary = salary;
 
     }
-
-     public TooSmallSalaryException() {
-
-     }
 
      @Override
      public String getMessage() {
